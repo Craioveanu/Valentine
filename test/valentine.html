@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai vrea sa te bulesc si sa fi my valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            position: relative; /* Add relative positioning to the body */
+        }
+
+        h1 {
+            color: #e74c3c; /* Red color for emphasis */
+            margin-bottom: 20px; /* Add space below the title */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px; /* Set a base margin */
+            position: absolute; /* Add absolute positioning to the button */
+        }
+
+        #yesButton {
+            left: calc(47% - 2cm - 20px); /* Centered, adjusted for 2 cm distance */
+            top: calc(110%); /* Adjusted to be lower on the screen */
+        }
+
+        #noButton {
+            left: calc(49% + 2cm); /* Centered, adjusted for 2 cm distance */
+            top: calc(110%); /* Adjusted to be lower on the screen */
+        }
+
+        img {
+            max-width: 100%; /* Make sure the image doesn't exceed its container */
+            height: auto; /* Maintain the aspect ratio of the image */
+            margin-top: 20px; /* Add some space below the buttons */
+        }
+    </style>
+</head>
+<body>
+<h1>Ai vrea sa fi my valentine?</h1>
+<h2>Si sa te bulesc?</h2>
+<button id="yesButton">Da</button>
+<button id="noButton">Nu</button>
+
+<img src="ursulet.gif" alt="Valentine's Day GIF">
+
+<script>
+    document.getElementById('yesButton').addEventListener('click', function() {
+        alert('Te iubesc enorm de mult!');
+        // You can add more actions here
+    });
+
+    let noButton = document.getElementById('noButton');
+    noButton.addEventListener('click', function() {
+        if (!noButton.classList.contains('moving')) {
+
+            // Move the "No" button to a random position on the screen
+            moveButton();
+        }
+    });
+
+    function moveButton() {
+        noButton.classList.add('moving'); // Add a class to indicate movement
+        let maxX = window.innerWidth - noButton.offsetWidth;
+        let maxY = window.innerHeight - noButton.offsetHeight;
+
+        // Generate random positions
+        let randomX = Math.floor(Math.random() * maxX);
+        let randomY = Math.floor(Math.random() * maxY);
+
+        // Apply new positions
+        noButton.style.left = randomX + 'px';
+        noButton.style.top = randomY + 'px';
+
+        // Wait for a short duration and then remove the class to enable clicking again
+        setTimeout(function() {
+            noButton.classList.remove('moving');
+        }, 10); // Adjust the duration as needed (1000 milliseconds = 1 second)
+    }
+</script>
+</body>
+</html>
